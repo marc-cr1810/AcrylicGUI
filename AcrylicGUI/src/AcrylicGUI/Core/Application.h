@@ -3,6 +3,7 @@
 #include "AcrylicGUI/Core/Base.h"
 
 #include "AcrylicGUI/Core/Window.h"
+#include "AcrylicGUI/Core/LayerStack.h"
 #include "AcrylicGUI/Core/Timestep.h"
 
 #include "AcrylicGUI/Events/Event.h"
@@ -32,6 +33,9 @@ namespace AcrylicGUI
 
 		void OnEvent(Event& e);
 
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* overlay);
+
 		Window& GetWindow() { return *m_Window; }
 
 		void Close();
@@ -48,6 +52,7 @@ namespace AcrylicGUI
 		Scope<Window> m_Window;
 		bool m_Running = true;
 		bool m_Minimized = false;
+		LayerStack m_LayerStack;
 		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;

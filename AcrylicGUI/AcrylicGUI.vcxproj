@@ -157,6 +157,8 @@
   <ItemGroup>
     <ClCompile Include="src\acpch.cpp" />
     <ClCompile Include="src\AcrylicGUI\Core\Application.cpp" />
+    <ClCompile Include="src\AcrylicGUI\Core\Layer.cpp" />
+    <ClCompile Include="src\AcrylicGUI\Core\LayerStack.cpp" />
     <ClCompile Include="src\AcrylicGUI\Core\Log.cpp" />
     <ClCompile Include="src\AcrylicGUI\Core\Window.cpp" />
     <ClCompile Include="src\AcrylicGUI\Renderer\GraphicsContext.cpp" />
@@ -178,6 +180,8 @@
     <ClInclude Include="src\AcrylicGUI\Core\EntryPoint.h" />
     <ClInclude Include="src\AcrylicGUI\Core\Input.h" />
     <ClInclude Include="src\AcrylicGUI\Core\KeyCodes.h" />
+    <ClInclude Include="src\AcrylicGUI\Core\Layer.h" />
+    <ClInclude Include="src\AcrylicGUI\Core\LayerStack.h" />
     <ClInclude Include="src\AcrylicGUI\Core\Log.h" />
     <ClInclude Include="src\AcrylicGUI\Core\MouseCodes.h" />
     <ClInclude Include="src\AcrylicGUI\Core\PlatformDetection.h" />

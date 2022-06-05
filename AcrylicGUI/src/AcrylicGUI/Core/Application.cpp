@@ -29,6 +29,18 @@ namespace AcrylicGUI
 		Renderer::Shutdown();
 	}
 
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+	void Application::PushOverlay(Layer* overlay)
+	{
+		m_LayerStack.PushOverlay(overlay);
+		overlay->OnAttach();
+	}
+
 	void Application::Close()
 	{
 		m_Running = false;
@@ -40,12 +52,12 @@ namespace AcrylicGUI
 		dispatcher.Dispatch<WindowCloseEvent>(AC_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(AC_BIND_EVENT_FN(Application::OnWindowResized));
 
-		/*for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
 		{
 			if (e.Handled)
 				break;
 			(*it)->OnEvent(e);
-		}*/
+		}
 	}
 
 	void Application::Run()
@@ -58,10 +70,10 @@ namespace AcrylicGUI
 
 			if (!m_Minimized)
 			{
-				/*for (Layer* layer : m_LayerStack)
+				for (Layer* layer : m_LayerStack)
 					layer->OnUpdate(timestep);
 
-				m_ImGuiLayer->Begin();
+				/*m_ImGuiLayer->Begin();
 				{
 					for (Layer* layer : m_LayerStack)
 						layer->OnImGuiRender();
